@@ -16,4 +16,4 @@ My personal portfolio website: projects in predictive analytics, machine learnin
 HTML and CSS, hosted on GitHub Pages.
 
 ## Contact
-[LinkedIn](https://www.linkedin.com/in/mariabssadh) · mariabssadh@gmail.com
+[LinkedIn](https://www.linkedin.com/in/mariabssadh) 
