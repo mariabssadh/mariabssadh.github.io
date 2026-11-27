@@ -7,7 +7,7 @@
 <meta name="description" content="Data science portfolio of Maria George Bssadh: machine learning, GenAI and causal inference projects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #F5F4F0;
@@ -15,7 +15,7 @@
     --muted: #64656E;
     --line: #DAD7CF;
     --blue: #344E41;
-    --orange: #7F5539;
+    --orange: #C9962B;
     --yellow: #DDB892;
     --sage: #A3B18A;
     --plum: #588157;
@@ -23,10 +23,10 @@
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; height: 100%; }
-  body { background: var(--bg); color: var(--ink); font-family: "Figtree", system-ui, sans-serif; font-size: 17px; line-height: 1.6; }
+  body { transition: background .6s; background: var(--bg); color: var(--ink); font-family: "Inter", system-ui, sans-serif; font-size: 17px; line-height: 1.6; }
   a { color: inherit; }
   :focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 4px; }
-  .serif { font-family: "Fraunces", Georgia, serif; }
+  .serif { font-family: "Poppins", system-ui, sans-serif; }
 
   /* nav */
   nav.top { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 40px; position: relative; z-index: 3; }
@@ -36,7 +36,7 @@
   .about summary { cursor: pointer; list-style: none; color: var(--muted); font-weight: 500; }
   .about summary:hover, .about[open] summary { color: var(--ink); }
   .about summary::-webkit-details-marker { display: none; }
-  .about-pop { position: absolute; top: calc(100% + 10px); left: 0; width: 320px; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px 4px; box-shadow: 0 12px 30px rgba(23,24,31,.08); line-height: 1.55; }
+  .about-pop { position: absolute; top: calc(100% + 10px); left: 0; width: 320px; background: var(--pop, #fff); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px 4px; box-shadow: 0 12px 30px rgba(23,24,31,.08); line-height: 1.55; }
   .about-pop p { margin: 0 0 14px; color: var(--muted); }
   .about-links { display: flex; gap: 16px; }
   .about-links a { color: var(--ink); font-weight: 600; }
@@ -44,8 +44,8 @@
   /* field: option G look */
   .field { position: relative; width: 100%; max-width: 1320px; margin: 10px auto 0; aspect-ratio: 1100 / 560; container-type: inline-size; }
   .bit { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); border-radius: 50%; background: var(--c); opacity: .85; mix-blend-mode: multiply; transform: translate(-50%, -50%); pointer-events: none; }
-  .cat { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; text-decoration: none; color: var(--ink); z-index: 2; }
-  .cat .dot { position: absolute; left: 0; top: 0; width: var(--s); height: var(--s); border-radius: 50%; background: var(--c); opacity: .9; mix-blend-mode: multiply; transform: translate(-50%, -50%); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+  .cat { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; text-decoration: none; color: #4B4C54; z-index: 2; }
+  .cat .dot { position: absolute; left: 0; top: 0; width: var(--s); height: var(--s); border-radius: 50%; background: var(--c); transform: translate(-50%, -50%); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
   .cat .label { position: absolute; left: 0; top: calc(var(--s) / 2 + 10px); transform: translateX(-50%); white-space: nowrap; text-align: center; font-size: 15px; font-weight: 500; line-height: 1.3; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
   .cat .label small { display: block; font-size: 13px; font-weight: 400; color: var(--muted); }
   .cat:hover .dot, .cat:focus-visible .dot { transform: translate(-50%, -50%) scale(1.25); }
@@ -64,20 +64,20 @@
   .close { font: inherit; font-size: 14px; color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 999px; padding: 7px 16px; cursor: pointer; }
   .page-inner { max-width: 1100px; margin: 0 auto; }
   .kind { font-size: 15px; opacity: .85; margin: 0 0 14px; }
-  .page h1 { font-family: "Fraunces", Georgia, serif; font-weight: 300; font-size: clamp(44px, 6.5vw, 88px); line-height: 1.02; letter-spacing: -0.02em; margin: 0; max-width: 12em; }
+  .page h1 { font-family: "Poppins", system-ui, sans-serif; font-weight: 300; font-size: clamp(44px, 6.5vw, 88px); line-height: 1.02; letter-spacing: -0.02em; margin: 0; max-width: 12em; }
   .award { display: inline-block; margin-top: 26px; padding: 7px 16px; border-radius: 999px; background: rgba(255,255,255,.2); font-size: 15px; }
   .page-body { padding: 80px 40px 60px; }
   .grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; }
-  .question { font-family: "Fraunces", Georgia, serif; font-weight: 300; font-size: clamp(26px, 2.8vw, 36px); line-height: 1.25; margin: 0; }
+  .question { font-family: "Poppins", system-ui, sans-serif; font-weight: 300; font-size: clamp(26px, 2.8vw, 36px); line-height: 1.25; margin: 0; }
   .question-label, .block h2 { font-size: 13px; font-weight: 600; color: var(--muted); margin: 0 0 10px; letter-spacing: .02em; }
   .block { margin-bottom: 40px; }
   .block p { margin: 0; }
   .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tags span { font-size: 14px; padding: 5px 14px; border-radius: 999px; background: #EBE9E3; }
-  .link-btn { display: inline-block; background: var(--ink); color: #fff; text-decoration: none; padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; }
+  .tags span { font-size: 14px; padding: 5px 14px; border-radius: 999px; background: var(--chip, #EBE9E3); }
+  .link-btn { display: inline-block; background: var(--ink); color: var(--bg); text-decoration: none; padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; }
   .status { color: var(--muted); }
   .next { margin-top: 70px; border-top: 1px solid var(--line); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-  .next button { font: inherit; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 0; color: var(--ink); font-size: 20px; font-family: "Fraunces", Georgia, serif; }
+  .next button { font: inherit; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 0; color: var(--ink); font-size: 20px; font-family: "Poppins", system-ui, sans-serif; }
   .next button .mini { width: 28px; height: 28px; border-radius: 50%; background: var(--nc); }
   .next span.lbl { font-size: 13px; color: var(--muted); }
 
@@ -85,9 +85,9 @@
   .plist { border-top: 1px solid var(--line); }
   .pitem { display: grid; grid-template-columns: 1fr 1.3fr; gap: 70px; padding: 48px 0; border-bottom: 1px solid var(--line); }
   .pitem .kind { color: var(--muted); font-size: 14px; opacity: 1; margin: 0 0 10px; }
-  .pitem h3 { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.15; margin: 0; }
+  .pitem h3 { font-family: "Poppins", system-ui, sans-serif; font-weight: 400; font-size: 32px; line-height: 1.15; margin: 0; }
   .pitem .badge { display: inline-block; margin-top: 16px; padding: 5px 14px; border-radius: 999px; background: var(--c); color: var(--on); font-size: 14px; }
-  .pitem .q { font-family: "Fraunces", Georgia, serif; font-size: 21px; line-height: 1.35; margin: 0 0 16px; }
+  .pitem .q { font-family: "Poppins", system-ui, sans-serif; font-size: 21px; line-height: 1.35; margin: 0 0 16px; }
   .pitem p { margin: 0 0 14px; }
   .pitem .mine { color: var(--muted); }
   .pitem .mine b { color: var(--ink); font-weight: 600; }
@@ -97,14 +97,14 @@
   /* info pages (experience, skills, education) */
   .rows { border-top: 1px solid var(--line); }
   .row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; padding: 30px 0; border-bottom: 1px solid var(--line); }
-  .row h3 { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-size: 24px; line-height: 1.2; margin: 0 0 4px; }
+  .row h3 { font-family: "Poppins", system-ui, sans-serif; font-weight: 400; font-size: 24px; line-height: 1.2; margin: 0 0 4px; }
   .row .org { color: var(--muted); margin: 0; }
   .row p { margin: 0; }
   .skillgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; border-top: 1px solid var(--line); }
   .skillgrid div { padding: 24px 0; border-bottom: 1px solid var(--line); }
   .skillgrid h3 { font-size: 16px; font-weight: 600; margin: 0 0 6px; }
   .skillgrid p { margin: 0; color: var(--muted); }
-  .lead { font-family: "Fraunces", Georgia, serif; font-weight: 300; font-size: 26px; line-height: 1.35; max-width: 30em; margin: 0 0 50px; }
+  .lead { font-family: "Poppins", system-ui, sans-serif; font-weight: 300; font-size: 26px; line-height: 1.35; max-width: 30em; margin: 0 0 50px; }
 
   @media (prefers-reduced-motion: reduce) {
     .page, .page.open { transition: none; }
@@ -144,13 +144,44 @@
 </nav>
 
 <main class="field" id="field" aria-label="Sections"></main>
-<p class="caption">Choose a circle to open a section.</p>
+<p class="caption" id="season-note"></p>
 
 <div class="page" id="page" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="page-title"></div>
 
 <script>
-const C = { blue: "#344E41", orange: "#7F5539", yellow: "#DDB892", sage: "#A3B18A", plum: "#588157", navy: "#1D2030" };
-const onColor = c => { const n = parseInt(c.slice(1), 16), l = (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)); return l > 165 ? "#17181F" : "#FFFFFF"; };
+const C = { blue: "#344E41", orange: "#C9962B", yellow: "#DDB892", sage: "#A3B18A", plum: "#588157", navy: "#1D2030" };
+
+// Colours change with the season. Autumn is the base palette; the others swap each colour.
+//                 master's    personal    sand        experience  education   skills
+const PALETTES = {
+  autumn: ["#344E41", "#C9962B", "#DDB892", "#A3B18A", "#588157", "#5E8C7F"],
+  winter: ["#1F2F4F", "#7FA7D1", "#D3DEEA", "#A9BCD0", "#3D5A80", "#98C1D9"],
+  spring: ["#7A5BA8", "#E88FA8", "#F2D5DE", "#B9A6E0", "#EFC24F", "#7FC4AA"],
+  summer: ["#1E56E0", "#F26B21", "#FFC425", "#13A3B5", "#E3262E", "#8CC63F"]
+};
+const SEASON = "autumn";   // the site always uses the autumn colours
+const sc = hex => { const i = PALETTES.autumn.indexOf(hex); return i < 0 ? hex : PALETTES[SEASON][i]; };
+for (const k in C) C[k] = sc(C[k]);
+
+// The five circles, left to right. Each season's colours run in order across the row.
+const SECTION_SEQ = ["personal", "masters", "education", "experience", "skills"];
+// The colours shift with the visitor's own time of day (their computer's clock).
+const TIMES = {
+  morning: { row: ["#E2B957", "#BCC7A3", "#7FA071", "#7FA79A", "#58735F"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" },
+  afternoon: { row: ["#C9962B", "#A3B18A", "#588157", "#5E8C7F", "#344E41"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" },
+  evening: { row: ["#E0A12E", "#B5B98E", "#5E8A58", "#5F9284", "#38533F"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" },
+  night: { row: ["#B8862A", "#8E9A72", "#46663F", "#3F6358", "#22322A"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" }
+};
+const TIME = (() => {
+  const asked = new URLSearchParams(location.search).get("time");     // preview: ?time=night
+  if (TIMES[asked]) return asked;
+  const h = new Date().getHours();
+  return h >= 5 && h < 11 ? "morning" : h < 17 && h >= 11 ? "afternoon" : h >= 17 && h < 21 ? "evening" : "night";
+})();
+const T = TIMES[TIME];
+for (const k of ["bg", "ink", "muted", "line", "chip", "pop"]) document.documentElement.style.setProperty("--" + k, T[k]);
+const sectionColor = Object.fromEntries(SECTION_SEQ.map((id, i) => [id, T.row[i]]));
+const onColor = c => { const n = parseInt(c.slice(1), 16), l = (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)); return l > 150 ? "#17181F" : "#FFFFFF"; };
 
 const projects = [
   { group: "masters", id: "flowbridge", title: "Flowbridge", sub: "Master's · Supply chain", color: C.sage, x: 8, y: 74, s: 96,
@@ -229,7 +260,7 @@ const info = {
       <div class="row"><div><h3>Real Property Portfolio Analyst</h3><p class="org">Department of National Defence</p></div><p>Analyzed the department's real property portfolio.</p></div>
       <div class="row"><div><h3>Indirect Goods &amp; Services Procurement Agent</h3><p class="org">Bombardier Aerospace</p></div><p>Worked on the buyer–supplier side of the business, handling procurement of indirect goods and services.</p></div>
     </div>` },
-  skills: { title: "Skills", color: "#5E8C7F", html: `
+  skills: { title: "Skills", color: sc("#5E8C7F"), html: `
     <p class="lead">I have a solid foundation in Python and SQL and understand how code, data and models fit together. I build efficiently with AI-assisted development tools, and I keep growing my hands-on programming with every project.</p>
     <div class="skillgrid">
       <div><h3>Programming &amp; data</h3><p>Python, SQL, R, pandas, Git, Excel (advanced), AI-assisted development</p></div>
@@ -252,15 +283,18 @@ const info = {
 const field = document.getElementById("field");
 const W = 1100, H = 560;
 const mpos = (x, y) => [ Math.min(80, Math.max(20, (y - 120) / 340 * 60 + 20)), (x - 40) / 1040 * 82 + 8 ];
-const gdots = [[59, 291, 18, "#A3B18A"], [90, 342, 24, "#7F5539"], [114, 311, 10, "#344E41"], [149, 361, 10, "#344E41"], [181, 408, 24, "#A3B18A"], [219, 310, 24, "#7F5539"], [242, 353, 8, "#7F5539"], [278, 323, 24, "#344E41"], [306, 303, 10, "#7F5539"], [333, 378, 18, "#344E41"], [363, 282, 24, "#344E41"], [394, 320, 14, "#7F5539"], [420, 361, 8, "#A3B18A"], [442, 310, 14, "#A3B18A"], [471, 361, 10, "#7F5539"], [519, 289, 8, "#A3B18A"], [538, 266, 24, "#7F5539"], [576, 224, 14, "#DDB892"], [592, 208, 8, "#7F5539"], [625, 359, 8, "#344E41"], [651, 260, 24, "#7F5539"], [689, 216, 10, "#7F5539"], [718, 203, 10, "#344E41"], [745, 261, 24, "#DDB892"], [790, 249, 24, "#DDB892"], [801, 222, 10, "#7F5539"], [839, 271, 14, "#A3B18A"], [861, 208, 8, "#7F5539"], [902, 198, 14, "#A3B18A"], [923, 251, 24, "#A3B18A"], [967, 210, 10, "#DDB892"], [998, 207, 24, "#7F5539"], [1025, 202, 24, "#7F5539"], [1054, 214, 18, "#A3B18A"]];
-const catsRaw = [["personal", "Personal Projects", "3 hackathon projects", "#7F5539", 175, 235, 6.5], ["masters", "Master's Projects", "6 projects from the MMA", "#344E41", 430, 200, 7.5], ["experience", "Experience", "4 roles", "#A3B18A", 660, 345, 6], ["skills", "Skills", "Tools and methods", "#5E8C7F", 850, 135, 5.5], ["education", "Education", "McGill and uOttawa", "#588157", 1010, 320, 5.5]];
+const gdots = [[59, 291, 18, "#A3B18A"], [90, 342, 24, "#C9962B"], [114, 311, 10, "#344E41"], [149, 361, 10, "#344E41"], [181, 408, 24, "#A3B18A"], [219, 310, 24, "#C9962B"], [242, 353, 8, "#C9962B"], [278, 323, 24, "#344E41"], [306, 303, 10, "#C9962B"], [333, 378, 18, "#344E41"], [363, 282, 24, "#344E41"], [394, 320, 14, "#C9962B"], [420, 361, 8, "#A3B18A"], [442, 310, 14, "#A3B18A"], [471, 361, 10, "#C9962B"], [519, 289, 8, "#A3B18A"], [538, 266, 24, "#C9962B"], [576, 224, 14, "#DDB892"], [592, 208, 8, "#C9962B"], [625, 359, 8, "#344E41"], [651, 260, 24, "#C9962B"], [689, 216, 10, "#C9962B"], [718, 203, 10, "#344E41"], [745, 261, 24, "#DDB892"], [790, 249, 24, "#DDB892"], [801, 222, 10, "#C9962B"], [839, 271, 14, "#A3B18A"], [861, 208, 8, "#C9962B"], [902, 198, 14, "#A3B18A"], [923, 251, 24, "#A3B18A"], [967, 210, 10, "#DDB892"], [998, 207, 24, "#C9962B"], [1025, 202, 24, "#C9962B"], [1054, 214, 18, "#A3B18A"]];
+const catsRaw = [["personal", "Personal Projects", "3 hackathon projects", "#C9962B", 150, 290, 7], ["masters", "Master's Projects", "6 projects from the MMA", "#344E41", 350, 290, 7], ["education", "Education", "McGill and uOttawa", "#588157", 550, 290, 7], ["experience", "Experience", "4 roles", "#A3B18A", 750, 290, 7], ["skills", "Skills", "Tools and methods", "#5E8C7F", 950, 290, 7]];
 const clear = (x, y, r) => catsRaw.every(([, , , , cx, cy, cs]) => {
   const R = cs / 100 * W / 2, dx = x - cx, dy = y - cy;
   if (Math.hypot(dx, dy) < R + r + 6) return false;                       // touching the big circle
   if (Math.abs(dx) < 75 + r && dy > R - r && dy < R + 34 + r) return false; // over its label
   return true;
 });
-gdots.filter(([x, y, r], i) => i % 3 === 0 && clear(x, y, r)).forEach(([x, y, r, c]) => {
+// a few small dots, weighted to the left so the page feels balanced
+const deco = [];
+deco.filter(([x, y, r]) => clear(x, y, r)).forEach(([x, y, r, c]) => {
+  c = sc(c);
   const b = document.createElement("span"); b.className = "bit"; b.setAttribute("aria-hidden", "true");
   const [mx, my] = mpos(x, y);
   b.style.cssText = `--x:${x / W * 100}%;--y:${y / H * 100}%;--mx:${mx}%;--my:${my}%;--s:${r * 2 / W * 100}cqw;--c:${c}`;
@@ -268,12 +302,16 @@ gdots.filter(([x, y, r], i) => i % 3 === 0 && clear(x, y, r)).forEach(([x, y, r,
 });
 const cats = catsRaw;
 cats.forEach(([id, title, sub, c, x, y, s]) => {
+  c = sectionColor[id];
   const a = document.createElement("a"); a.className = "cat"; a.href = "#" + id; a.dataset.id = id;
   const [mx, my] = mpos(x, y);
   a.style.cssText = `--x:${x / W * 100}%;--y:${y / H * 100}%;--mx:${mx}%;--my:${my}%;--s:${s}cqw;--c:${c}`;
   a.innerHTML = `<span class="dot"></span><span class="label">${title}</span>`;
   field.appendChild(a);
 });
+
+const greeting = { morning: "Good morning", afternoon: "Good afternoon", evening: "Good evening", night: "Good night" }[TIME];
+document.getElementById("season-note").textContent = `${greeting}! Please select a circle to view.`;
 
 // hide small dots that touch a big circle or its label at the current screen size
 function tidy() {
@@ -315,7 +353,9 @@ function groupHTML(key) {
     </article>`).join("");
   return topHTML(g.title, g.color, g.intro) + `<div class="page-body"><div class="page-inner"><div class="plist">${items}</div>${nextHTML(key)}</div></div>`;
 }
-const sectionOrder = ["personal", "masters", "experience", "skills", "education"];
+const sectionOrder = SECTION_SEQ;
+for (const k in groups) groups[k].color = sectionColor[k];
+for (const k in info) info[k].color = sectionColor[k];
 const sectionMeta = id => groups[id] || info[id];
 function nextHTML(key) {
   const n = sectionOrder[(sectionOrder.indexOf(key) + 1) % sectionOrder.length];
