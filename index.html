@@ -46,7 +46,7 @@
   .bit { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); border-radius: 50%; background: var(--c); opacity: .85; mix-blend-mode: multiply; transform: translate(-50%, -50%); pointer-events: none; }
   .cat { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; text-decoration: none; color: #4B4C54; z-index: 2; }
   .cat .dot { position: absolute; left: 0; top: 0; width: var(--s); height: var(--s); border-radius: 50%; background: var(--c); transform: translate(-50%, -50%); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
-  .cat .label { position: absolute; left: 0; top: calc(var(--s) / 2 + 10px); transform: translateX(-50%); white-space: nowrap; text-align: center; font-size: 15px; font-weight: 500; line-height: 1.3; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+  .cat .label { position: absolute; left: 0; top: calc(var(--s) / 2 + 9px); transform: translateX(-50%); white-space: nowrap; text-align: center; font-size: 14px; font-weight: 500; line-height: 1.3; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
   .cat .label small { display: block; font-size: 13px; font-weight: 400; color: var(--muted); }
   .cat:hover .dot, .cat:focus-visible .dot { transform: translate(-50%, -50%) scale(1.25); }
   .cat:hover .label, .cat:focus-visible .label { transform: translateX(-50%) translateY(calc(var(--s) * .125)); }
@@ -80,6 +80,13 @@
   .next button { font: inherit; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 0; color: var(--ink); font-size: 20px; font-family: "Poppins", system-ui, sans-serif; }
   .next button .mini { width: 28px; height: 28px; border-radius: 50%; background: var(--nc); }
   .next span.lbl { font-size: 13px; color: var(--muted); }
+
+  /* project tabs */
+  .tabs { display: inline-flex; gap: 6px; padding: 5px; border-radius: 999px; background: var(--chip, #EBE9E3); margin-bottom: 22px; }
+  .tab { font: inherit; font-size: 15px; font-weight: 500; border: none; background: transparent; color: var(--muted); padding: 9px 22px; border-radius: 999px; cursor: pointer; }
+  .tab:hover { color: var(--ink); }
+  .tab[aria-selected="true"] { background: var(--c); color: var(--on); }
+  .tab-intro { color: var(--muted); margin: 0 0 36px; max-width: 40em; }
 
   /* project lists */
   .plist { border-top: 1px solid var(--line); }
@@ -118,7 +125,7 @@
     .bit { left: var(--mx); top: var(--my); width: calc(var(--s) * 1.9); height: calc(var(--s) * 1.9); }
     .cat { left: var(--mx); top: var(--my); }
     .cat .dot { width: calc(var(--s) * 2.1); height: calc(var(--s) * 2.1); }
-    .cat .label { top: calc(var(--s) * 1.05 + 10px); font-size: 15px; }
+    .cat .label { top: calc(var(--s) * 1.05 + 9px); font-size: 14px; }
     .caption { padding: 0 22px 24px; }
     .page-top, .page-body { padding-left: 22px; padding-right: 22px; }
     .page-bar { margin-bottom: 50px; }
@@ -164,7 +171,7 @@ const sc = hex => { const i = PALETTES.autumn.indexOf(hex); return i < 0 ? hex :
 for (const k in C) C[k] = sc(C[k]);
 
 // The five circles, left to right. Each season's colours run in order across the row.
-const SECTION_SEQ = ["personal", "masters", "education", "experience", "skills"];
+const SECTION_SEQ = ["projects", "education", "experience", "skills"];
 // The colours shift with the visitor's own time of day (their computer's clock).
 const TIMES = {
   morning: { row: ["#E2B957", "#BCC7A3", "#7FA071", "#7FA79A", "#58735F"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" },
@@ -180,7 +187,7 @@ const TIME = (() => {
 })();
 const T = TIMES[TIME];
 for (const k of ["bg", "ink", "muted", "line", "chip", "pop"]) document.documentElement.style.setProperty("--" + k, T[k]);
-const sectionColor = Object.fromEntries(SECTION_SEQ.map((id, i) => [id, T.row[i]]));
+const sectionColor = Object.fromEntries(SECTION_SEQ.map((id, i) => [id, T.row[[0, 1, 2, 4][i]]]));
 const onColor = c => { const n = parseInt(c.slice(1), 16), l = (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)); return l > 150 ? "#17181F" : "#FFFFFF"; };
 
 const projects = [
@@ -284,7 +291,7 @@ const field = document.getElementById("field");
 const W = 1100, H = 560;
 const mpos = (x, y) => [ Math.min(80, Math.max(20, (y - 120) / 340 * 60 + 20)), (x - 40) / 1040 * 82 + 8 ];
 const gdots = [[59, 291, 18, "#A3B18A"], [90, 342, 24, "#C9962B"], [114, 311, 10, "#344E41"], [149, 361, 10, "#344E41"], [181, 408, 24, "#A3B18A"], [219, 310, 24, "#C9962B"], [242, 353, 8, "#C9962B"], [278, 323, 24, "#344E41"], [306, 303, 10, "#C9962B"], [333, 378, 18, "#344E41"], [363, 282, 24, "#344E41"], [394, 320, 14, "#C9962B"], [420, 361, 8, "#A3B18A"], [442, 310, 14, "#A3B18A"], [471, 361, 10, "#C9962B"], [519, 289, 8, "#A3B18A"], [538, 266, 24, "#C9962B"], [576, 224, 14, "#DDB892"], [592, 208, 8, "#C9962B"], [625, 359, 8, "#344E41"], [651, 260, 24, "#C9962B"], [689, 216, 10, "#C9962B"], [718, 203, 10, "#344E41"], [745, 261, 24, "#DDB892"], [790, 249, 24, "#DDB892"], [801, 222, 10, "#C9962B"], [839, 271, 14, "#A3B18A"], [861, 208, 8, "#C9962B"], [902, 198, 14, "#A3B18A"], [923, 251, 24, "#A3B18A"], [967, 210, 10, "#DDB892"], [998, 207, 24, "#C9962B"], [1025, 202, 24, "#C9962B"], [1054, 214, 18, "#A3B18A"]];
-const catsRaw = [["personal", "Personal Projects", "3 hackathon projects", "#C9962B", 150, 290, 7], ["masters", "Master's Projects", "6 projects from the MMA", "#344E41", 350, 290, 7], ["education", "Education", "McGill and uOttawa", "#588157", 550, 290, 7], ["experience", "Experience", "4 roles", "#A3B18A", 750, 290, 7], ["skills", "Skills", "Tools and methods", "#5E8C7F", 950, 290, 7]];
+const catsRaw = [["projects", "Projects", "", null, 200, 290, 6.25], ["education", "Education", "", null, 433, 290, 6.25], ["experience", "Experience", "", null, 667, 290, 6.25], ["skills", "Skills", "", null, 900, 290, 6.25]];
 const clear = (x, y, r) => catsRaw.every(([, , , , cx, cy, cs]) => {
   const R = cs / 100 * W / 2, dx = x - cx, dy = y - cy;
   if (Math.hypot(dx, dy) < R + r + 6) return false;                       // touching the big circle
@@ -329,8 +336,9 @@ tidy(); addEventListener("resize", tidy);
 const page = document.getElementById("page");
 
 const groups = {
-  personal: { title: "Personal Projects", intro: "Hackathons and competitions I joined outside of class.", color: C.orange, order: ["qloop", "fiam", "aldo"] },
-  masters: { title: "Master's Projects", intro: "From my MMA at McGill: real data, from prediction and deep learning to causal inference and production ML.", color: C.blue, order: ["spark", "flowbridge", "uplift", "art", "cyber", "pipeline"] }
+  projects: { title: "Projects", tabs: ["personal", "masters"] },
+  personal: { title: "Personal Projects", label: "Personal", intro: "Hackathons and competitions I joined outside of class.", color: C.orange, order: ["qloop", "fiam", "aldo"] },
+  masters: { title: "Master's Projects", label: "Master's", intro: "From my MMA at McGill: real data, from prediction and deep learning to causal inference and production ML.", color: C.blue, order: ["spark", "flowbridge", "uplift", "art", "cyber", "pipeline"] }
 };
 function topHTML(title, color, intro) {
   return `<div class="page-top" style="--c:${color};--on:${onColor(color)}"><div class="page-inner">
@@ -338,10 +346,9 @@ function topHTML(title, color, intro) {
     <h1 id="page-title">${title}</h1>${intro ? `<p class="kind" style="margin:22px 0 0;font-size:18px;max-width:34em">${intro}</p>` : ""}
   </div></div>`;
 }
-function groupHTML(key) {
-  const g = groups[key];
-  const items = g.order.map(id => projects.find(p => p.id === id)).map(p => `
-    <article class="pitem" id="p-${p.id}" style="--c:${g.color};--on:${onColor(g.color)}">
+function projectItems(key, color) {
+  return groups[key].order.map(id => projects.find(p => p.id === id)).map(p => `
+    <article class="pitem" id="p-${p.id}" style="--c:${color};--on:${onColor(color)}">
       <div><p class="kind">${p.kind}</p><h3>${p.full}</h3>${p.award ? `<span class="badge">${p.award}</span>` : ""}</div>
       <div>
         <p class="q">${p.question}</p>
@@ -351,10 +358,17 @@ function groupHTML(key) {
         ${p.link ? `<a class="link-btn" href="${p.link}">View the code on GitHub</a>` : `<p class="status">${p.status}</p>`}
       </div>
     </article>`).join("");
-  return topHTML(g.title, g.color, g.intro) + `<div class="page-body"><div class="page-inner"><div class="plist">${items}</div>${nextHTML(key)}</div></div>`;
+}
+function groupHTML(tab) {
+  const color = sectionColor.projects;
+  const tabs = groups.projects.tabs.map(k => `<button type="button" role="tab" class="tab" data-tab="${k}" aria-selected="${k === tab}">${groups[k].label}</button>`).join("");
+  return topHTML("Projects", color) + `<div class="page-body"><div class="page-inner">
+    <div class="tabs" role="tablist" aria-label="Project type" style="--c:${color};--on:${onColor(color)}">${tabs}</div>
+    <p class="tab-intro">${groups[tab].intro}</p>
+    <div class="plist">${projectItems(tab, color)}</div>${nextHTML("projects")}</div></div>`;
 }
 const sectionOrder = SECTION_SEQ;
-for (const k in groups) groups[k].color = sectionColor[k];
+groups.projects.color = sectionColor.projects;
 for (const k in info) info[k].color = sectionColor[k];
 const sectionMeta = id => groups[id] || info[id];
 function nextHTML(key) {
@@ -374,9 +388,10 @@ function originFor(id) {
 function render() {
   const id = location.hash.slice(1);
   if (groups[id] || info[id]) {
-    const [x, y] = originFor(id);
+    const tab = id === "masters" ? "masters" : "personal";
+    const [x, y] = originFor(groups[id] ? "projects" : id);
     page.style.setProperty("--x", x + "px"); page.style.setProperty("--y", y + "px");
-    page.innerHTML = groups[id] ? groupHTML(id) : infoHTML(id);
+    page.innerHTML = groups[id] ? groupHTML(tab) : infoHTML(id);
     page.scrollTop = 0;
     page.classList.add("open");
     document.body.style.overflow = "hidden";
@@ -387,6 +402,13 @@ function render() {
   }
 }
 page.addEventListener("click", e => {
+  const tb = e.target.closest("[data-tab]");
+  if (tb) {
+    const k = tb.dataset.tab;
+    page.querySelectorAll("[data-tab]").forEach(b => b.setAttribute("aria-selected", b === tb));
+    page.querySelector(".tab-intro").textContent = groups[k].intro;
+    page.querySelector(".plist").innerHTML = projectItems(k, sectionColor.projects);
+  }
   if (e.target.closest(".close")) { history.pushState("", "", location.pathname); render(); }
   const nx = e.target.closest("[data-next]");
   if (nx) { location.hash = nx.dataset.next; }
