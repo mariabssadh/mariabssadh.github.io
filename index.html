@@ -1,482 +1,359 @@
-<!-- Generated with Claude -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maria George Bssadh | Data Science Portfolio</title>
-    <meta name="description" content="Portfolio of Maria George Bssadh: MMA candidate at McGill, building predictive models that support real business decisions." />
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maria George Bssadh | Data Science Portfolio</title>
+<meta name="description" content="Data science portfolio of Maria George Bssadh: machine learning, GenAI and causal inference projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F4F0;
+    --ink: #17181F;
+    --muted: #64656E;
+    --line: #DAD7CF;
+    --blue: #344E41;
+    --orange: #7F5539;
+    --yellow: #DDB892;
+    --sage: #A3B18A;
+    --plum: #588157;
+    --navy: #1D2030;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: "Figtree", system-ui, sans-serif; font-size: 17px; line-height: 1.6; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 4px; }
+  .serif { font-family: "Fraunces", Georgia, serif; }
 
-    <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+  /* nav */
+  nav.top { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 40px; position: relative; z-index: 3; }
+  .who { display: flex; align-items: center; gap: 14px; }
+  .name { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; }
+  .about { position: relative; font-size: 14px; }
+  .about summary { cursor: pointer; list-style: none; color: var(--muted); font-weight: 500; }
+  .about summary:hover, .about[open] summary { color: var(--ink); }
+  .about summary::-webkit-details-marker { display: none; }
+  .about-pop { position: absolute; top: calc(100% + 10px); left: 0; width: 320px; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px 4px; box-shadow: 0 12px 30px rgba(23,24,31,.08); line-height: 1.55; }
+  .about-pop p { margin: 0 0 14px; color: var(--muted); }
+  .about-links { display: flex; gap: 16px; }
+  .about-links a { color: var(--ink); font-weight: 600; }
+  
+  /* field: option G look */
+  .field { position: relative; width: 100%; max-width: 1320px; margin: 10px auto 0; aspect-ratio: 1100 / 560; container-type: inline-size; }
+  .bit { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); border-radius: 50%; background: var(--c); opacity: .85; mix-blend-mode: multiply; transform: translate(-50%, -50%); pointer-events: none; }
+  .cat { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; text-decoration: none; color: var(--ink); z-index: 2; }
+  .cat .dot { position: absolute; left: 0; top: 0; width: var(--s); height: var(--s); border-radius: 50%; background: var(--c); opacity: .9; mix-blend-mode: multiply; transform: translate(-50%, -50%); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+  .cat .label { position: absolute; left: 0; top: calc(var(--s) / 2 + 10px); transform: translateX(-50%); white-space: nowrap; text-align: center; font-size: 15px; font-weight: 500; line-height: 1.3; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+  .cat .label small { display: block; font-size: 13px; font-weight: 400; color: var(--muted); }
+  .cat:hover .dot, .cat:focus-visible .dot { transform: translate(-50%, -50%) scale(1.25); }
+  .cat:hover .label, .cat:focus-visible .label { transform: translateX(-50%) translateY(calc(var(--s) * .125)); }
+  .cat:focus-visible { outline: none; }
+  .cat:focus-visible .dot { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--ink); }
+  .caption { padding: 0 40px 24px; font-size: 14px; color: var(--muted); }
 
-      /* ---------- COLOURS: change these to adjust the whole site ---------- */
-      :root {
-        --forest: #1F3A2E;      /* dark green: left panel */
-        --forest-2: #2A4A3B;    /* slightly lighter dark green */
-        --sage: #5F8B6E;        /* accent green */
-        --mint: #EAF3EC;        /* light green: page background */
-        --mist: #F6FAF6;        /* very light green: cards */
-        --leaf: #D5E8D9;        /* soft green: tags, boxes */
-        --ink: #23332B;         /* main text */
-        --muted: #4F6357;       /* secondary text */
-        --cream: #F3F1E7;       /* text on dark green */
-      }
+  /* project page */
+  .page { position: fixed; inset: 0; z-index: 10; background: var(--bg); overflow-y: auto; visibility: hidden;
+          clip-path: circle(0px at var(--x, 50%) var(--y, 50%)); transition: clip-path .7s cubic-bezier(.6,0,.2,1), visibility 0s .7s; }
+  .page.open { visibility: visible; clip-path: circle(150vmax at var(--x, 50%) var(--y, 50%)); transition: clip-path .7s cubic-bezier(.6,0,.2,1), visibility 0s; }
+  .page:focus { outline: none; }
+  .page-top { background: var(--c); color: var(--on); padding: 26px 40px 70px; }
+  .page-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 90px; font-size: 14px; }
+  .close { font: inherit; font-size: 14px; color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 999px; padding: 7px 16px; cursor: pointer; }
+  .page-inner { max-width: 1100px; margin: 0 auto; }
+  .kind { font-size: 15px; opacity: .85; margin: 0 0 14px; }
+  .page h1 { font-family: "Fraunces", Georgia, serif; font-weight: 300; font-size: clamp(44px, 6.5vw, 88px); line-height: 1.02; letter-spacing: -0.02em; margin: 0; max-width: 12em; }
+  .award { display: inline-block; margin-top: 26px; padding: 7px 16px; border-radius: 999px; background: rgba(255,255,255,.2); font-size: 15px; }
+  .page-body { padding: 80px 40px 60px; }
+  .grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; }
+  .question { font-family: "Fraunces", Georgia, serif; font-weight: 300; font-size: clamp(26px, 2.8vw, 36px); line-height: 1.25; margin: 0; }
+  .question-label, .block h2 { font-size: 13px; font-weight: 600; color: var(--muted); margin: 0 0 10px; letter-spacing: .02em; }
+  .block { margin-bottom: 40px; }
+  .block p { margin: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags span { font-size: 14px; padding: 5px 14px; border-radius: 999px; background: #EBE9E3; }
+  .link-btn { display: inline-block; background: var(--ink); color: #fff; text-decoration: none; padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; }
+  .status { color: var(--muted); }
+  .next { margin-top: 70px; border-top: 1px solid var(--line); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+  .next button { font: inherit; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 0; color: var(--ink); font-size: 20px; font-family: "Fraunces", Georgia, serif; }
+  .next button .mini { width: 28px; height: 28px; border-radius: 50%; background: var(--nc); }
+  .next span.lbl { font-size: 13px; color: var(--muted); }
 
-      html { scroll-behavior: smooth; }
+  /* project lists */
+  .plist { border-top: 1px solid var(--line); }
+  .pitem { display: grid; grid-template-columns: 1fr 1.3fr; gap: 70px; padding: 48px 0; border-bottom: 1px solid var(--line); }
+  .pitem .kind { color: var(--muted); font-size: 14px; opacity: 1; margin: 0 0 10px; }
+  .pitem h3 { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.15; margin: 0; }
+  .pitem .badge { display: inline-block; margin-top: 16px; padding: 5px 14px; border-radius: 999px; background: var(--c); color: var(--on); font-size: 14px; }
+  .pitem .q { font-family: "Fraunces", Georgia, serif; font-size: 21px; line-height: 1.35; margin: 0 0 16px; }
+  .pitem p { margin: 0 0 14px; }
+  .pitem .mine { color: var(--muted); }
+  .pitem .mine b { color: var(--ink); font-weight: 600; }
+  .pitem .tags { margin: 18px 0 16px; }
+  .pitem .link-btn { font-size: 14px; padding: 9px 18px; }
 
-      body {
-        font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-        color: var(--ink);
-        background: var(--mint);
-        line-height: 1.65;
-      }
+  /* info pages (experience, skills, education) */
+  .rows { border-top: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+  .row h3 { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-size: 24px; line-height: 1.2; margin: 0 0 4px; }
+  .row .org { color: var(--muted); margin: 0; }
+  .row p { margin: 0; }
+  .skillgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; border-top: 1px solid var(--line); }
+  .skillgrid div { padding: 24px 0; border-bottom: 1px solid var(--line); }
+  .skillgrid h3 { font-size: 16px; font-weight: 600; margin: 0 0 6px; }
+  .skillgrid p { margin: 0; color: var(--muted); }
+  .lead { font-family: "Fraunces", Georgia, serif; font-weight: 300; font-size: 26px; line-height: 1.35; max-width: 30em; margin: 0 0 50px; }
 
-      a { color: var(--sage); }
-
-      /* ---------- TWO-COLUMN LAYOUT ---------- */
-      .layout { display: grid; grid-template-columns: 360px 1fr; min-height: 100vh; }
-
-      /* ---------- LEFT: DARK GREEN PANEL ---------- */
-      .sidebar {
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        overflow-y: auto;
-        background: linear-gradient(180deg, var(--forest) 0%, var(--forest-2) 100%);
-        color: var(--cream);
-        padding: 36px 34px 30px;
-        display: flex;
-        flex-direction: column;
-      }
-      .photo {
-        width: 230px;
-        height: 230px;
-        object-fit: cover;
-        display: block;
-        align-self: center;
-        margin-bottom: 22px;
-      }
-      .sidebar h1 { font-size: 26px; line-height: 1.25; color: #FFFFFF; margin-bottom: 6px; font-weight: 700; }
-      .sidebar .role { color: #A9CDB2; font-weight: 600; font-size: 15px; margin-bottom: 16px; }
-      .linkedin-link {
-        display: inline-flex; align-items: center; gap: 7px;
-        color: var(--cream); font-size: 13.5px; text-decoration: none;
-        margin-bottom: 16px; opacity: 0.9;
-      }
-      .linkedin-link:hover { opacity: 1; text-decoration: underline; }
-      .sidebar .intro { font-size: 14px; line-height: 1.6; color: rgba(243, 241, 231, 0.85); margin-bottom: 22px; }
-
-      .badge-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
-      .badge {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: var(--cream);
-        font-size: 13px;
-        padding: 5px 12px;
-        border-radius: 8px;
-      }
-
-      .side-nav { display: flex; flex-direction: column; gap: 2px; margin-bottom: 20px; }
-      .side-nav a {
-        color: rgba(243, 241, 231, 0.8);
-        text-decoration: none;
-        font-size: 15px;
-        padding: 3px 0 3px 14px;
-        border-left: 2px solid rgba(255, 255, 255, 0.15);
-        transition: color 0.2s, border-color 0.2s;
-      }
-      .side-nav a:hover { color: #FFFFFF; border-left-color: #A9CDB2; }
-
-      .side-contact { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 10px; }
-      .side-contact a {
-        color: var(--forest);
-        background: var(--cream);
-        text-decoration: none;
-        font-size: 13px;
-        font-weight: 700;
-        padding: 8px 14px;
-        border-radius: 8px;
-      }
-      .side-contact a:hover { background: #FFFFFF; }
-
-      /* ---------- RIGHT: LIGHT GREEN CONTENT ---------- */
-      .content { padding: 56px 6vw 40px; max-width: 1100px; }
-
-      .section { margin-bottom: 70px; }
-      .section h2 { font-size: 24px; color: var(--forest); margin-bottom: 6px; font-weight: 700; }
-      .section-intro { color: var(--muted); margin-bottom: 26px; }
-
-      /* Highlights */
-      .highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-      .highlight {
-        background: var(--mist);
-        border-radius: 14px;
-        padding: 20px;
-        border: 1px solid var(--leaf);
-      }
-      .highlight .big { font-size: 17px; font-weight: 700; color: var(--forest); margin-bottom: 6px; }
-      .highlight p { font-size: 14px; color: var(--muted); }
-
-      /* Project cards */
-      .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
-      .card {
-        display: flex;
-        flex-direction: column;
-        background: var(--mist);
-        border-radius: 14px;
-        overflow: hidden;
-        border: 1px solid var(--leaf);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(31, 58, 46, 0.10); }
-
-      /* Soft colour strip at the top of each card. To use a picture instead, replace
-         <div class="card-banner">…</div> with: <img src="your-image.png" class="card-photo" alt="…"> */
-      .card-banner { height: 10px; }
-      .card-photo { width: 100%; height: 96px; object-fit: cover; display: block; }
-      .b1 { background: linear-gradient(135deg, #CFE3D4, #A9CDB2); }
-      .b2 { background: linear-gradient(135deg, #DDEBDF, #B9D6C0); }
-      .b3 { background: linear-gradient(135deg, #D3E6DF, #A6CBBE); }
-      .b4 { background: linear-gradient(135deg, #E2EDD9, #BFD6A9); }
-      .b5 { background: linear-gradient(135deg, #E6EEDC, #C9DBB4); }
-      .b6 { background: linear-gradient(135deg, #D6E7E4, #ADCFC9); }
-
-      .card-text { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
-      .card-label { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: var(--sage); margin-bottom: 4px; }
-      .card-text h3 { font-size: 17px; color: var(--forest); margin-bottom: 8px; line-height: 1.35; }
-      .card-text p { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
-      .my-role { font-size: 13px; color: var(--ink); margin-bottom: 12px; }
-      .my-role strong { color: var(--forest); }
-
-      .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
-      .tag { background: var(--leaf); color: #0F2419; font-weight: 400; font-size: 12px; padding: 3px 10px; border-radius: 999px; }
-
-      .card-links { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
-      .card-links a {
-        font-size: 13px; font-weight: 700; text-decoration: none;
-        color: #FFFFFF; background: var(--forest);
-        padding: 7px 14px; border-radius: 8px;
-      }
-      .card-links a:hover { background: var(--sage); }
-      .soon { font-size: 13px; color: var(--muted); font-style: italic; }
-
-      .more-projects { margin-top: 22px; background: var(--mist); border: 1px solid var(--leaf); border-radius: 14px; padding: 20px 24px; }
-      .more-projects h3 { font-size: 16px; color: var(--forest); margin-bottom: 8px; }
-      .more-projects ul { padding-left: 20px; color: var(--muted); font-size: 14px; }
-      .more-projects li { margin: 4px 0; }
-
-      /* Experience timeline */
-      .timeline { border-left: 2px solid var(--leaf); padding-left: 26px; }
-      .job { position: relative; margin-bottom: 26px; }
-      .job::before {
-        content: ""; position: absolute; left: -33px; top: 7px;
-        width: 12px; height: 12px; border-radius: 50%;
-        background: var(--sage); border: 3px solid var(--mint);
-      }
-      .job h3 { font-size: 16px; color: var(--forest); }
-      .job .org { font-weight: 600; color: var(--sage); font-size: 14.5px; margin-bottom: 4px; }
-      .job p { font-size: 14px; color: var(--muted); }
-
-      /* Skills */
-      .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-      .skill-box { background: var(--mist); border: 1px solid var(--leaf); border-radius: 14px; padding: 20px; }
-      .skill-box h3 { font-size: 15.5px; color: var(--forest); margin-bottom: 10px; }
-
-      /* Education */
-      .edu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-      .edu-card { background: var(--mist); border: 1px solid var(--leaf); border-radius: 14px; padding: 22px; }
-      .edu-card h3 { font-size: 16px; color: var(--forest); margin-bottom: 4px; }
-      .edu-card .org { color: var(--sage); font-weight: 600; margin-bottom: 8px; font-size: 14.5px; }
-      .edu-card p { font-size: 14px; color: var(--muted); }
-
-      footer { color: var(--muted); font-size: 13px; padding-top: 10px; }
-
-      /* ---------- SMALLER SCREENS ---------- */
-      @media (max-width: 1100px) {
-        .highlights { grid-template-columns: 1fr; }
-        .skills { grid-template-columns: repeat(2, 1fr); }
-      }
-      @media (max-width: 900px) {
-        .layout { grid-template-columns: 1fr; }
-        .sidebar { position: static; height: auto; text-align: center; align-items: center; padding: 40px 24px; }
-        .badge-row { align-items: center; }
-        .side-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 14px; }
-        .side-nav a { border-left: none; padding: 0; }
-        .side-contact { justify-content: center; }
-        .content { padding: 40px 22px; }
-        .cards, .skills, .edu { grid-template-columns: 1fr; }
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="layout">
-      <!-- ============ LEFT: DARK GREEN PANEL ============ -->
-      <aside class="sidebar" id="about">
-        <img src="headshot.jpg" class="photo" alt="Maria George Bssadh" />
-        <h1>Maria George Bssadh</h1>
-        <div class="role">Data Science &amp; Predictive Analytics</div>
-        <p class="intro">
-          I turn business questions into models that people can act on. I'm a Master of Management in Analytics
-          (MMA) candidate at McGill University, with a Finance degree and experience at Export Development Canada,
-          the Department of National Defence and Bombardier. That background helps me connect every model to KPIs,
-          costs and real decisions.
-        </p>
-
-        <nav class="side-nav">
-          <a href="#personal-projects">Personal Projects</a>
-          <a href="#masters-projects">Master's Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#education">Education</a>
-        </nav>
-        <div class="side-contact" id="contact">
-          <a href="https://www.linkedin.com/in/mariabssadh" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/mariabssadh" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </aside>
-
-      <!-- ============ RIGHT: LIGHT GREEN CONTENT ============ -->
-      <main class="content">
-    <!-- ============ HIGHLIGHTS ============ -->
-    <section class="section">
-      <div class="highlights">
-        <div class="highlight">
-          <div class="big">Award winner</div>
-          <p>Judges' Prize for Most Innovative at the Scope-AI-Thon 2026 (Waterloo x McGill) for QLoop, an AI idea for emergency waiting rooms.</p>
-        </div>
-        <div class="highlight">
-          <div class="big">Team Lead</div>
-          <p>Leading a 4-person MMA capstone with Propel Holdings' data science team, building a model on real company data.</p>
-        </div>
-        <div class="highlight">
-          <div class="big">Business + tech</div>
-          <p>Finance, real estate portfolio analysis and procurement experience, now paired with machine learning and GenAI.</p>
-        </div>
+  @media (prefers-reduced-motion: reduce) {
+    .page, .page.open { transition: none; }
+    .proj .dot { transition: none; }
+  }
+  @media (max-width: 820px) {
+    nav.top { padding: 18px 22px; flex-wrap: wrap; }
+    nav.top ul { gap: 18px; font-size: 14px; }
+    .about-pop { width: min(320px, calc(100vw - 44px)); }
+    .field { aspect-ratio: 560 / 1000; margin-top: 0; }
+    .bit { left: var(--mx); top: var(--my); width: calc(var(--s) * 1.9); height: calc(var(--s) * 1.9); }
+    .cat { left: var(--mx); top: var(--my); }
+    .cat .dot { width: calc(var(--s) * 2.1); height: calc(var(--s) * 2.1); }
+    .cat .label { top: calc(var(--s) * 1.05 + 10px); font-size: 15px; }
+    .caption { padding: 0 22px 24px; }
+    .page-top, .page-body { padding-left: 22px; padding-right: 22px; }
+    .page-bar { margin-bottom: 50px; }
+    .grid, .row, .pitem { grid-template-columns: 1fr; gap: 16px; }
+    .pitem { padding: 34px 0; }
+    .row { gap: 8px; }
+    .skillgrid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Main">
+  <div class="who">
+    <a class="name" href="#">Maria George Bssadh</a>
+    <details class="about">
+      <summary>About me</summary>
+      <div class="about-pop">
+        <p>I'm Maria, finishing my Master of Management in Analytics at McGill after a Finance degree (uOttawa, 2024) and roles at Export Development Canada, the Department of National Defence and Bombardier. I'm looking for data science roles in Toronto and Montreal.</p>
+        <p class="about-links"><a href="https://www.linkedin.com/in/mariabssadh">LinkedIn</a><a href="https://github.com/mariabssadh">GitHub</a></p>
       </div>
-    </section>
+    </details>
+  </div>
+</nav>
 
-    <!-- ============ PROJECTS ============ -->
-    <section id="personal-projects" class="section">
-      <h2>Personal Projects</h2>
-      <p class="section-intro">Hackathons and competitions I joined outside of class.</p>
-      <div class="cards">
-        <!-- 2. QLOOP -->
-        <div class="card">
-          <div class="card-banner b2"></div>
-          <div class="card-text">
-            <div class="card-label">AI for Healthcare · Award Winner</div>
-            <h3>QLoop: AI Vitals Chair for ER Waiting Rooms</h3>
-            <p>A self-service vitals chair that checks waiting patients and alerts nurses when someone's condition gets worse. Won the Judges' Prize for Most Innovative at the Scope-AI-Thon 2026.</p>
-            <div class="my-role"><strong>My role:</strong> presented the risks, costs and final recommendation to the judges.</div>
-            <div class="tags"><span class="tag">AI strategy</span><span class="tag">Risk analysis</span><span class="tag">Cost modelling</span></div>
-            <div class="card-links"><span class="soon">Pitch deck coming soon</span></div>
-          </div>
-        </div>
+<main class="field" id="field" aria-label="Sections"></main>
+<p class="caption">Choose a circle to open a section.</p>
 
-        <!-- ALDO RETURNS AGENT -->
-        <div class="card">
-          <div class="card-banner b5"></div>
-          <div class="card-text">
-            <div class="card-label">Generative AI · Hackathon</div>
-            <h3>Return Check Agent for ALDO</h3>
-            <p>An AI agent that helps ALDO check shoe returns faster and more consistently, built during a GenAI hackathon.</p>
-            <div class="my-role"><strong>My role:</strong> designed the slide deck that explains the solution. [Add anything else you built]</div>
-            <div class="tags"><span class="tag">LLM agents</span><span class="tag">Retail</span><span class="tag">GenAI</span></div>
-            <div class="card-links"><span class="soon">Code coming soon</span></div>
-          </div>
-        </div>
+<div class="page" id="page" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="page-title"></div>
 
-        <!-- FIAM MULTI-AGENT -->
-        <div class="card">
-          <div class="card-banner b3"></div>
-          <div class="card-text">
-            <div class="card-label">Multi-Agent AI · Hackathon</div>
-            <h3>Multi-Agent Investment Research (McGill-FIAM)</h3>
-            <p>A team pipeline of AI agents that reads company filings and builds a market-neutral portfolio.</p>
-            <div class="my-role"><strong>My role:</strong> built the "devil's advocate" agent that challenges the other agents' ideas before the portfolio is built.</div>
-            <div class="tags"><span class="tag">LangGraph</span><span class="tag">Python</span><span class="tag">LLM agents</span></div>
-            <div class="card-links"><span class="soon">Code coming soon</span></div>
-          </div>
-        </div>
+<script>
+const C = { blue: "#344E41", orange: "#7F5539", yellow: "#DDB892", sage: "#A3B18A", plum: "#588157", navy: "#1D2030" };
+const onColor = c => { const n = parseInt(c.slice(1), 16), l = (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)); return l > 165 ? "#17181F" : "#FFFFFF"; };
 
+const projects = [
+  { group: "masters", id: "flowbridge", title: "Flowbridge", sub: "Master's · Supply chain", color: C.sage, x: 8, y: 74, s: 96,
+    kind: "Master's project · Supply chain analytics · Team of 4",
+    full: "Flowbridge: the 2025 tariffs and US–Mexico trade",
+    question: "After the 2025 tariffs, when, where and what should Mexican produce suppliers ship?",
+    overview: "We studied how the 2025 US tariffs reshaped trade between the US and Mexico using US government trade data, then built a tool that helps Mexican fruit and vegetable suppliers decide when to ship, which route to use and which products to send.",
+    role: "Compared produce with other goods, compared US entry states and transport modes, and worked out freight cost per kg by route.",
+    tags: ["Multivariate statistics", "pandas", "BTS and CBP data"], status: "Code coming soon" },
+  { group: "personal", id: "aldo", title: "ALDO return agent", sub: "Hackathon · GenAI", color: C.plum, x: 19, y: 56, s: 78,
+    kind: "Personal project · Generative AI hackathon",
+    full: "Return Check Agent for ALDO",
+    question: "How can ALDO check shoe returns faster and more consistently?",
+    overview: "Our team built an AI agent that helps store staff check returned shoes, so decisions are quicker and the same from one store to the next.",
+    role: "Designed the slide deck that explains the problem, the agent and the business case.",
+    tags: ["LLM agents", "Generative AI", "Retail"], status: "Code coming soon" },
+  { group: "masters", id: "uplift", title: "Email uplift", sub: "Master's · Causal inference", color: C.yellow, x: 30, y: 72, s: 90,
+    kind: "Master's project · Causal inference · Individual",
+    full: "Email marketing uplift",
+    question: "Which customers buy because of a marketing email, not just after it?",
+    overview: "Using the Hillstrom email dataset, I estimated the true effect of a marketing email on each type of customer, so a business can send emails only to the people they actually influence and save money on everyone else.",
+    role: "Individual project: data exploration, causal models and business recommendations.",
+    tags: ["CausalML", "DoWhy", "Python"], status: "Code coming soon" },
+  { group: "masters", id: "cyber", title: "Cyberbullying detection", sub: "Master's · NLP", color: C.blue, x: 40, y: 47, s: 76,
+    kind: "Master's project · Text analytics · Team of 6",
+    full: "Cyberbullying detection",
+    question: "Can a model flag harmful posts so platforms find them faster?",
+    overview: "A text classification model that reads online posts and flags likely cyberbullying, so moderators can focus on the posts that need attention first.",
+    role: "Group project for McGill's text analytics course.",
+    tags: ["NLP", "Text classification", "Python"], status: "Code coming soon" },
+  { group: "personal", id: "qloop", title: "QLoop", sub: "Hackathon · Award winner", color: C.orange, x: 52, y: 37, s: 150,
+    kind: "Personal project · AI for healthcare · Scope-AI-Thon 2026",
+    full: "QLoop: an AI vitals chair for ER waiting rooms",
+    award: "Judges' Prize for Most Innovative",
+    question: "How can ER staff spot a waiting patient who is getting worse before it's too late?",
+    overview: "QLoop is a self-service vitals chair for emergency waiting rooms. Patients sit, the chair checks their vital signs, and nurses get an alert when someone's condition is getting worse. Before building the idea, I spoke with a doctor to understand where the real problems were.",
+    role: "Presented the risks, costs and final recommendation to a panel of doctors, PhD professors and alumni.",
+    tags: ["AI strategy", "Risk analysis", "Cost modelling"], status: "Pitch deck coming soon" },
+  { group: "masters", id: "art", title: "Art detector", sub: "Master's · Deep learning", color: C.sage, x: 63, y: 58, s: 84,
+    kind: "Master's project · Deep learning · Individual",
+    full: "Real vs AI-generated art detector",
+    question: "Can a model tell real artwork apart from AI-generated images?",
+    overview: "A computer vision model trained to separate human-made artwork from AI-generated images, combining my love of art with deep learning.",
+    role: "Individual project, from collecting the images to training and evaluating the model.",
+    tags: ["Deep learning", "CNNs", "Python"], status: "In progress" },
+  { group: "masters", id: "pipeline", title: "Real-time pipeline", sub: "Master's · Big data", color: C.plum, x: 73, y: 34, s: 76,
+    kind: "Master's project · Big data · Individual",
+    full: "Real-time data pipeline",
+    question: "How do you process data that never stops arriving?",
+    overview: "A pipeline that handles data both in batches and as a live stream, the way large companies process events as they happen.",
+    role: "Individual project, from setting up the stream to processing the data.",
+    tags: ["Kafka (Confluent)", "Spark", "Databricks"], status: "Code coming soon" },
+  { group: "personal", id: "fiam", title: "Multi-agent research", sub: "Hackathon · McGill-FIAM", color: C.yellow, x: 83, y: 54, s: 92,
+    kind: "Personal project · McGill-FIAM Asset Management Hackathon",
+    full: "Multi-agent investment research",
+    question: "Can a team of AI agents research companies and build a balanced portfolio?",
+    overview: "A pipeline of AI agents that reads company filings, forms investment ideas and builds a market-neutral portfolio.",
+    role: "Built the \"devil's advocate\" agent, which challenges the other agents' ideas before the portfolio is built.",
+    tags: ["LangGraph", "LLM agents", "Python"], status: "Code coming soon" },
+  { group: "masters", id: "spark", title: "Spark Check", sub: "Master's · ML in production", color: C.blue, x: 91, y: 22, s: 124,
+    kind: "Master's project · Machine learning in production · Team of 7",
+    full: "Spark Check: predicting student burnout",
+    question: "Which students are heading toward burnout, early enough for someone to reach out?",
+    overview: "Spark Check predicts which students are at risk of burnout from phone and sensor data (StudentLife), so counsellors and professors can reach out early. It's built as a full system: data, model, API, monitoring and a web page.",
+    role: "Chose the dataset, framed the problem, explored the data and built the web page.",
+    tags: ["Python", "scikit-learn", "API", "Monitoring"], link: "https://github.com/mariabssadh1-droid/spark_check" }
+];
+
+const info = {
+  experience: { title: "Experience", color: C.sage, html: `
+    <div class="rows">
+      <div class="row"><div><h3>Team Lead, MMA Capstone</h3><p class="org">Propel Holdings × McGill</p></div>
+        <p>I lead a team of 4 working with Propel's risk team on data science for the customer utilization model. I'm the main contact with the client, I plan and split the team's work, and I help with the modelling. Client data is confidential, so it isn't shared here.</p></div>
+      <div class="row"><div><h3>Junior Associate, Treasury &amp; Investments Accounting and CEBA Finance</h3><p class="org">Export Development Canada</p></div>
+        <p>Investments accounting, treasury and CEBA loan program finance. I helped start a tool that gathers drawdown and distribution notices into one place, saving logins and making audits easier.</p></div>
+      <div class="row"><div><h3>Real Property Portfolio Analyst</h3><p class="org">Department of National Defence</p></div><p>Analyzed the department's real property portfolio.</p></div>
+      <div class="row"><div><h3>Indirect Goods &amp; Services Procurement Agent</h3><p class="org">Bombardier Aerospace</p></div><p>Worked on the buyer–supplier side of the business, handling procurement of indirect goods and services.</p></div>
+    </div>` },
+  skills: { title: "Skills", color: "#5E8C7F", html: `
+    <p class="lead">I have a solid foundation in Python and SQL and understand how code, data and models fit together. I build efficiently with AI-assisted development tools, and I keep growing my hands-on programming with every project.</p>
+    <div class="skillgrid">
+      <div><h3>Programming &amp; data</h3><p>Python, SQL, R, pandas, Git, Excel (advanced), AI-assisted development</p></div>
+      <div><h3>Machine learning &amp; AI</h3><p>Regression and classification, forecasting, deep learning, NLP, causal inference, LLM agents, LangGraph</p></div>
+      <div><h3>Statistics</h3><p>Hypothesis testing, multivariate statistics</p></div>
+      <div><h3>Big data &amp; cloud</h3><p>Spark, Kafka, Databricks, APIs, model monitoring, Google Cloud, AWS, Azure</p></div>
+      <div><h3>Dashboards</h3><p>DOMO, Power BI, Tableau</p></div>
+      <div><h3>Business &amp; leadership</h3><p>Finance, procurement, team leadership, client communication, presenting to non-technical teams</p></div>
+    </div>` },
+  education: { title: "Education", color: C.plum, html: `
+    <div class="rows">
+      <div class="row"><div><h3>Master of Management in Analytics (MMA)</h3><p class="org">McGill University, Desautels Faculty of Management</p></div>
+        <p>Machine learning, deep learning, text analytics, multivariate statistics, causal inference and ML in production.</p></div>
+      <div class="row"><div><h3>Honours Bachelor of Commerce, Finance (Co-op)</h3><p class="org">University of Ottawa, Telfer School of Management</p></div>
+        <p>Magna Cum Laude, 2024.</p></div>
+    </div>` }
+};
+
+// draw the field (option G dots)
+const field = document.getElementById("field");
+const W = 1100, H = 560;
+const mpos = (x, y) => [ Math.min(80, Math.max(20, (y - 120) / 340 * 60 + 20)), (x - 40) / 1040 * 82 + 8 ];
+const gdots = [[59, 291, 18, "#A3B18A"], [90, 342, 24, "#7F5539"], [114, 311, 10, "#344E41"], [149, 361, 10, "#344E41"], [181, 408, 24, "#A3B18A"], [219, 310, 24, "#7F5539"], [242, 353, 8, "#7F5539"], [278, 323, 24, "#344E41"], [306, 303, 10, "#7F5539"], [333, 378, 18, "#344E41"], [363, 282, 24, "#344E41"], [394, 320, 14, "#7F5539"], [420, 361, 8, "#A3B18A"], [442, 310, 14, "#A3B18A"], [471, 361, 10, "#7F5539"], [519, 289, 8, "#A3B18A"], [538, 266, 24, "#7F5539"], [576, 224, 14, "#DDB892"], [592, 208, 8, "#7F5539"], [625, 359, 8, "#344E41"], [651, 260, 24, "#7F5539"], [689, 216, 10, "#7F5539"], [718, 203, 10, "#344E41"], [745, 261, 24, "#DDB892"], [790, 249, 24, "#DDB892"], [801, 222, 10, "#7F5539"], [839, 271, 14, "#A3B18A"], [861, 208, 8, "#7F5539"], [902, 198, 14, "#A3B18A"], [923, 251, 24, "#A3B18A"], [967, 210, 10, "#DDB892"], [998, 207, 24, "#7F5539"], [1025, 202, 24, "#7F5539"], [1054, 214, 18, "#A3B18A"]];
+const catsRaw = [["personal", "Personal Projects", "3 hackathon projects", "#7F5539", 175, 235, 6.5], ["masters", "Master's Projects", "6 projects from the MMA", "#344E41", 430, 200, 7.5], ["experience", "Experience", "4 roles", "#A3B18A", 660, 345, 6], ["skills", "Skills", "Tools and methods", "#5E8C7F", 850, 135, 5.5], ["education", "Education", "McGill and uOttawa", "#588157", 1010, 320, 5.5]];
+const clear = (x, y, r) => catsRaw.every(([, , , , cx, cy, cs]) => {
+  const R = cs / 100 * W / 2, dx = x - cx, dy = y - cy;
+  if (Math.hypot(dx, dy) < R + r + 6) return false;                       // touching the big circle
+  if (Math.abs(dx) < 75 + r && dy > R - r && dy < R + 34 + r) return false; // over its label
+  return true;
+});
+gdots.filter(([x, y, r], i) => i % 3 === 0 && clear(x, y, r)).forEach(([x, y, r, c]) => {
+  const b = document.createElement("span"); b.className = "bit"; b.setAttribute("aria-hidden", "true");
+  const [mx, my] = mpos(x, y);
+  b.style.cssText = `--x:${x / W * 100}%;--y:${y / H * 100}%;--mx:${mx}%;--my:${my}%;--s:${r * 2 / W * 100}cqw;--c:${c}`;
+  field.appendChild(b);
+});
+const cats = catsRaw;
+cats.forEach(([id, title, sub, c, x, y, s]) => {
+  const a = document.createElement("a"); a.className = "cat"; a.href = "#" + id; a.dataset.id = id;
+  const [mx, my] = mpos(x, y);
+  a.style.cssText = `--x:${x / W * 100}%;--y:${y / H * 100}%;--mx:${mx}%;--my:${my}%;--s:${s}cqw;--c:${c}`;
+  a.innerHTML = `<span class="dot"></span><span class="label">${title}</span>`;
+  field.appendChild(a);
+});
+
+// hide small dots that touch a big circle or its label at the current screen size
+function tidy() {
+  const keep = [...field.querySelectorAll(".cat .dot, .cat .label")].map(e => e.getBoundingClientRect());
+  field.querySelectorAll(".bit").forEach(b => {
+    b.style.visibility = "visible";
+    const r = b.getBoundingClientRect(), pad = 6;
+    const hit = keep.some(k => r.right + pad > k.left && r.left - pad < k.right && r.bottom + pad > k.top && r.top - pad < k.bottom);
+    if (hit) b.style.visibility = "hidden";
+  });
+}
+tidy(); addEventListener("resize", tidy);
+
+// page rendering
+const page = document.getElementById("page");
+
+const groups = {
+  personal: { title: "Personal Projects", intro: "Hackathons and competitions I joined outside of class.", color: C.orange, order: ["qloop", "fiam", "aldo"] },
+  masters: { title: "Master's Projects", intro: "From my MMA at McGill: real data, from prediction and deep learning to causal inference and production ML.", color: C.blue, order: ["spark", "flowbridge", "uplift", "art", "cyber", "pipeline"] }
+};
+function topHTML(title, color, intro) {
+  return `<div class="page-top" style="--c:${color};--on:${onColor(color)}"><div class="page-inner">
+    <div class="page-bar"><span>Maria George Bssadh</span><button class="close" type="button">Close</button></div>
+    <h1 id="page-title">${title}</h1>${intro ? `<p class="kind" style="margin:22px 0 0;font-size:18px;max-width:34em">${intro}</p>` : ""}
+  </div></div>`;
+}
+function groupHTML(key) {
+  const g = groups[key];
+  const items = g.order.map(id => projects.find(p => p.id === id)).map(p => `
+    <article class="pitem" id="p-${p.id}" style="--c:${g.color};--on:${onColor(g.color)}">
+      <div><p class="kind">${p.kind}</p><h3>${p.full}</h3>${p.award ? `<span class="badge">${p.award}</span>` : ""}</div>
+      <div>
+        <p class="q">${p.question}</p>
+        <p>${p.overview}</p>
+        <p class="mine"><b>My role:</b> ${p.role}</p>
+        <div class="tags">${p.tags.map(t => `<span>${t}</span>`).join("")}</div>
+        ${p.link ? `<a class="link-btn" href="${p.link}">View the code on GitHub</a>` : `<p class="status">${p.status}</p>`}
       </div>
-    </section>
-
-    <section id="masters-projects" class="section">
-      <h2>Master's Projects</h2>
-      <p class="section-intro">Projects from my MMA at McGill: real data, from prediction and deep learning to causal inference and production ML.</p>
-      <div class="cards">
-        <!-- 1. SPARK CHECK -->
-        <div class="card">
-          <div class="card-banner b1"></div>
-          <div class="card-text">
-            <div class="card-label">Machine Learning in Production</div>
-            <h3>Spark Check: Student Burnout Prediction</h3>
-            <p>Predicts which students are at risk of burnout using phone and sensor data (StudentLife), so counselors and professors can reach out early. Built as a full system: data, model, API, monitoring and a web page.</p>
-            <div class="my-role"><strong>My role:</strong> dataset choice, problem framing and data exploration; built the web page in a 7-person team.</div>
-            <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">API</span><span class="tag">Monitoring</span></div>
-            <div class="card-links">
-              <a href="https://github.com/mariabssadh1-droid/spark_check" target="_blank" rel="noopener">View code</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. AI ART DETECTION -->
-        <div class="card">
-          <div class="card-banner b3"></div>
-          <div class="card-text">
-            <div class="card-label">Deep Learning · Computer Vision</div>
-            <h3>Real vs AI-Generated Art Detector</h3>
-            <p>A deep learning model that tells real artwork apart from AI-generated images, combining my love of art with computer vision.</p>
-            <div class="my-role"><strong>My role:</strong> individual project, from data collection to model training and evaluation.</div>
-            <div class="tags"><span class="tag">Deep learning</span><span class="tag">CNNs</span><span class="tag">Python</span></div>
-            <div class="card-links"><span class="soon">In progress</span></div>
-          </div>
-        </div>
-
-        <!-- 4. FLOWBRIDGE -->
-        <div class="card">
-          <div class="card-banner b4"></div>
-          <div class="card-text">
-            <div class="card-label">Supply Chain Analytics</div>
-            <h3>Flowbridge: 2025 Tariffs &amp; US–Mexico Trade</h3>
-            <p>How the 2025 US tariffs reshaped US–Mexico trade, ending with a tool that helps Mexican fruit and vegetable suppliers decide when to ship, which route to use and which products to send.</p>
-            <div class="my-role"><strong>My role:</strong> produce vs other goods analysis, US entry state and transport mode comparison, freight cost per kg by route.</div>
-            <div class="tags"><span class="tag">Multivariate stats</span><span class="tag">pandas</span><span class="tag">BTS &amp; CBP data</span></div>
-            <div class="card-links"><span class="soon">Code coming soon</span></div>
-          </div>
-        </div>
-
-        <!-- 5. CAUSAL INFERENCE -->
-        <div class="card">
-          <div class="card-banner b5"></div>
-          <div class="card-text">
-            <div class="card-label">Causal Inference · Marketing</div>
-            <h3>Email Marketing Uplift</h3>
-            <p>Finds which customers buy <em>because</em> of a marketing email, not just after it, so a business only targets people the email actually influences (Hillstrom dataset).</p>
-            <div class="my-role"><strong>My role:</strong> individual project: data exploration, causal models and business recommendations.</div>
-            <div class="tags"><span class="tag">CausalML</span><span class="tag">DoWhy</span><span class="tag">Python</span></div>
-            <div class="card-links"><span class="soon">Code coming soon</span></div>
-          </div>
-        </div>
-
-        <!-- 6. CYBERBULLYING -->
-        <div class="card">
-          <div class="card-banner b6"></div>
-          <div class="card-text">
-            <div class="card-label">Text Analytics · NLP</div>
-            <h3>Cyberbullying Detection</h3>
-            <p>A text analytics model that flags cyberbullying in online posts, so platforms can find harmful content faster.</p>
-            <div class="my-role"><strong>My role:</strong> group project (6 people). [Add your part]</div>
-            <div class="tags"><span class="tag">NLP</span><span class="tag">Text classification</span><span class="tag">Python</span></div>
-            <div class="card-links"><span class="soon">Code coming soon</span></div>
-          </div>
-        </div>
-
-        <!-- KAFKA SPARK -->
-        <div class="card">
-          <div class="card-banner b6"></div>
-          <div class="card-text">
-            <div class="card-label">Data Engineering · Big Data</div>
-            <h3>Real-Time Data Pipeline</h3>
-            <p>Processes data both in batches and as a live stream, the way large companies handle data that never stops arriving.</p>
-            <div class="my-role"><strong>My role:</strong> individual project, from setting up the stream to processing the data.</div>
-            <div class="tags"><span class="tag">Kafka (Confluent)</span><span class="tag">Spark</span><span class="tag">Databricks</span></div>
-            <div class="card-links"><span class="soon">Code coming soon</span></div>
-          </div>
-        </div>
-
-      </div>
-      <div class="more-projects">
-        <h3>Also</h3>
-        <ul>
-          <li><strong>Movie box-office prediction:</strong> regression model for opening-weekend revenue.</li>
-          <li><strong>Industry capstone with Propel Holdings:</strong> customer utilization model (client data is confidential, so it's not shared here).</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============ EXPERIENCE ============ -->
-    <section id="experience" class="section">
-      <h2>Experience</h2>
-      <p class="section-intro">Public sector, private sector and now applied data science.</p>
-      <div class="timeline">
-        <div class="job">
-          <h3>Team Lead &amp; Solutions Architect, MMA Industry Capstone</h3>
-          <div class="org">Propel Holdings × McGill</div>
-          <p>Lead a team of 4 working with Propel's data science team on a customer utilization model. Main contact with the client, plan and split the team's work, and support our data engineer. (Client data is confidential, so it's not shared here.)</p>
-        </div>
-        <div class="job">
-          <h3>Junior Associate, Treasury &amp; Investments Accounting · Junior Associate, CEBA Finance</h3>
-          <div class="org">Export Development Canada</div>
-          <p>Worked in treasury, investments accounting and CEBA loan program finance.</p>
-        </div>
-        <div class="job">
-          <h3>Real Property Portfolio Analyst</h3>
-          <div class="org">Department of National Defence Canada</div>
-          <p>Analyzed the real property portfolio.</p>
-        </div>
-        <div class="job">
-          <h3>Indirect Goods &amp; Services Procurement Agent</h3>
-          <div class="org">Bombardier Aerospace</div>
-          <p>Handled procurement of indirect goods and services, working on the buyer–supplier side of the business.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SKILLS ============ -->
-    <section id="skills" class="section">
-      <h2>Skills</h2>
-      <p class="section-intro">I have a solid foundation in Python and SQL and understand how code, data and models fit together. I build efficiently with AI-assisted development tools, which lets me go from idea to working prototype quickly, and I keep growing my hands-on programming skills with every project.</p>
-      <div class="skills">
-        <div class="skill-box">
-          <h3>Programming &amp; Data</h3>
-          <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">R</span><span class="tag">pandas</span><span class="tag">Git / GitHub</span><span class="tag">Excel (advanced)</span><span class="tag">AI-assisted development</span></div>
-        </div>
-        <div class="skill-box">
-          <h3>Machine Learning &amp; AI</h3>
-          <div class="tags"><span class="tag">Regression &amp; classification</span><span class="tag">Forecasting</span><span class="tag">Deep learning</span><span class="tag">NLP</span><span class="tag">Causal inference</span><span class="tag">LLM agents</span><span class="tag">LangGraph</span></div>
-        </div>
-        <div class="skill-box">
-          <h3>Statistics &amp; Experiments</h3>
-          <div class="tags"><span class="tag">Hypothesis testing</span><span class="tag">Multivariate statistics</span></div>
-        </div>
-        <div class="skill-box">
-          <h3>Big Data &amp; Cloud</h3>
-          <div class="tags"><span class="tag">Spark</span><span class="tag">Kafka</span><span class="tag">Databricks</span><span class="tag">APIs</span><span class="tag">Model monitoring</span><span class="tag">Google Cloud / AWS / Azure</span></div>
-        </div>
-        <div class="skill-box">
-          <h3>Dashboards &amp; Reporting</h3>
-          <div class="tags"><span class="tag">DOMO</span><span class="tag">Power BI</span><span class="tag">Tableau</span></div>
-        </div>
-        <div class="skill-box">
-          <h3>Business &amp; Leadership</h3>
-          <div class="tags"><span class="tag">Finance</span><span class="tag">Procurement</span><span class="tag">Presenting to non-technical teams</span><span class="tag">Team leadership</span><span class="tag">Client communication</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ EDUCATION ============ -->
-    <section class="section" id="education">
-      <h2>Education</h2>
-      <p class="section-intro">Business foundations plus advanced analytics.</p>
-      <div class="edu">
-        <div class="edu-card">
-          <h3>Master of Management in Analytics (MMA)</h3>
-          <div class="org">McGill University, Desautels Faculty of Management</div>
-          <p>Machine learning, deep learning, text analytics, multivariate statistics, causal inference, and ML in production.</p>
-        </div>
-        <div class="edu-card">
-          <h3>Honours Bachelor of Commerce, Finance (Co-op)</h3>
-          <div class="org">Telfer School of Management, University of Ottawa</div>
-          <p>Magna Cum Laude, 2024</p>
-        </div>
-      </div>
-    </section>
-
-        <footer>© 2026 Maria George Bssadh · Looking for data science roles in Toronto and Montreal</footer>
-      </main>
-    </div>
-  </body>
+    </article>`).join("");
+  return topHTML(g.title, g.color, g.intro) + `<div class="page-body"><div class="page-inner"><div class="plist">${items}</div>${nextHTML(key)}</div></div>`;
+}
+const sectionOrder = ["personal", "masters", "experience", "skills", "education"];
+const sectionMeta = id => groups[id] || info[id];
+function nextHTML(key) {
+  const n = sectionOrder[(sectionOrder.indexOf(key) + 1) % sectionOrder.length];
+  const m = sectionMeta(n);
+  return `<div class="next"><span class="lbl">Next</span><button type="button" data-next="${n}" style="--nc:${m.color}"><span class="mini"></span>${m.title}</button></div>`;
+}
+function infoHTML(key) {
+  const d = info[key];
+  return topHTML(d.title, d.color) + `<div class="page-body"><div class="page-inner">${d.html}${nextHTML(key)}</div></div>`;
+}
+function originFor(id) {
+  const el = field.querySelector(`[data-id="${id}"] .dot`);
+  if (el) { const r = el.getBoundingClientRect(); if (r.width) return [r.left + r.width / 2, r.top + r.height / 2]; }
+  return [innerWidth / 2, innerHeight / 2];
+}
+function render() {
+  const id = location.hash.slice(1);
+  if (groups[id] || info[id]) {
+    const [x, y] = originFor(id);
+    page.style.setProperty("--x", x + "px"); page.style.setProperty("--y", y + "px");
+    page.innerHTML = groups[id] ? groupHTML(id) : infoHTML(id);
+    page.scrollTop = 0;
+    page.classList.add("open");
+    document.body.style.overflow = "hidden";
+    page.focus({ preventScroll: true });
+  } else {
+    page.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+}
+page.addEventListener("click", e => {
+  if (e.target.closest(".close")) { history.pushState("", "", location.pathname); render(); }
+  const nx = e.target.closest("[data-next]");
+  if (nx) { location.hash = nx.dataset.next; }
+});
+addEventListener("keydown", e => { if (e.key === "Escape" && page.classList.contains("open")) { history.pushState("", "", location.pathname); render(); } });
+addEventListener("hashchange", render);
+render();
+</script>
+</body>
 </html>
