@@ -70,14 +70,14 @@
           clip-path: circle(0px at var(--x, 50%) var(--y, 50%)); transition: clip-path .7s cubic-bezier(.6,0,.2,1), visibility 0s .7s; }
   .page.open { visibility: visible; clip-path: circle(150vmax at var(--x, 50%) var(--y, 50%)); transition: clip-path .7s cubic-bezier(.6,0,.2,1), visibility 0s; }
   .page:focus { outline: none; }
-  .page-top { background: var(--c); color: var(--on); padding: 26px 40px 70px; }
-  .page-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 90px; font-size: 14px; }
+  .page-top { background: var(--bg); color: var(--ink); padding: 20px 40px 10px; }
+  .page-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; font-size: 14px; }
   .close { font: inherit; font-size: 14px; color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 999px; padding: 7px 16px; cursor: pointer; }
   .page-inner { max-width: 1100px; margin: 0 auto; }
   .kind { font-size: 15px; opacity: .85; margin: 0 0 14px; }
-  .page h1 { font-family: "Poppins", system-ui, sans-serif; font-weight: 300; font-size: clamp(44px, 6.5vw, 88px); line-height: 1.02; letter-spacing: -0.02em; margin: 0; max-width: 12em; }
+  .page h1 { font-family: "Poppins", system-ui, sans-serif; font-weight: 300; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em; margin: 0; max-width: 12em; }
   .award { display: inline-block; margin-top: 26px; padding: 7px 16px; border-radius: 999px; background: rgba(255,255,255,.2); font-size: 15px; }
-  .page-body { padding: 80px 40px 60px; }
+  .page-body { padding: 48px 40px 60px; }
   .grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; }
   .question { font-family: "Poppins", system-ui, sans-serif; font-weight: 300; font-size: clamp(26px, 2.8vw, 36px); line-height: 1.25; margin: 0; }
   .question-label, .block h2 { font-size: 13px; font-weight: 600; color: var(--muted); margin: 0 0 10px; letter-spacing: .02em; }
@@ -140,13 +140,50 @@
     .cat .dot { width: calc(var(--s) * 2.1); height: calc(var(--s) * 2.1); }
     .cat .label { top: calc(var(--s) * 1.05 + 9px); font-size: 14px; }
     .page-top, .page-body { padding-left: 22px; padding-right: 22px; }
-    .page-bar { margin-bottom: 50px; }
+    .page-bar { margin-bottom: 18px; }
     .grid, .row, .pitem { grid-template-columns: 1fr; gap: 16px; }
     .pitem { padding: 34px 0; }
     .row { gap: 8px; }
     .skillgrid { grid-template-columns: 1fr; }
   }
-</style>
+
+  .plist { border-top: none; }
+  .empty { color: var(--muted); padding: 30px 0; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+  .card { background: var(--pop, #fff); border: 1px solid var(--line); border-radius: 18px; padding: 24px 24px 20px; }
+  .card summary { list-style: none; cursor: pointer; display: flex; flex-direction: column; gap: 8px; }
+  .card summary::-webkit-details-marker { display: none; }
+  .dotm { width: 14px; height: 14px; border-radius: 50%; background: var(--c); }
+  .toprow { display: flex; justify-content: space-between; align-items: center; min-height: 22px; }
+  .card .t { font-family: "Poppins", sans-serif; font-size: 18px; font-weight: 500; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .card .one { color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+  .badge { align-self: flex-start; font-size: 12px; padding: 3px 10px; border-radius: 999px; background: var(--c); color: var(--on); }
+  .card .rm { font-size: 13px; font-weight: 600; color: var(--ink); margin-top: 6px; }
+  .card[open] .rm { display: none; }
+  .card:hover { border-color: var(--c); }
+  .more { margin-top: 14px; font-size: 14.5px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .more p { margin: 0 0 10px; }
+  .more .mine { color: var(--muted); } .more .mine b { color: var(--ink); font-weight: 600; }
+  .more .tags { margin: 12px 0; }
+  .more .tags span { font-size: 12.5px; }
+  @media (max-width: 820px) { .cards { grid-template-columns: 1fr; } }
+
+  /* info pages: cards */
+  .lead2 { color: var(--muted); margin: 0 0 30px; max-width: 42em; }
+  .icards { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 18px; }
+  .icards.three { grid-template-columns: repeat(3, 1fr); }
+  .icard { background: var(--pop, #fff); border: 1px solid var(--line); border-radius: 18px; padding: 24px 26px; }
+  .icard h3 { font-family: "Poppins", sans-serif; font-size: 18px; font-weight: 500; line-height: 1.35; margin: 0 0 10px; }
+  .icard h3 + .org2 { margin: -6px 0 12px; }
+  .icard p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+  .icard .org2 { font-size: 13px; margin: 0 0 6px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
+  .chips span { font-size: 13px; padding: 4px 12px; border-radius: 999px; background: var(--chip, #EBE9E3); color: var(--ink); }
+  @media (max-width: 820px) { .icards, .icards.three { grid-template-columns: 1fr; } }
+.tl{position:relative;max-width:800px;margin-top:20px}.tli{display:grid;grid-template-columns:80px 22px 1fr;gap:22px;padding:0 0 64px;position:relative}
+.tli:not(:last-child)::after{content:"";position:absolute;left:112px;top:20px;bottom:-2px;width:1.5px;background:var(--line)}
+.tlw{font-size:13px;color:var(--muted);padding-top:3px;text-align:right}.tld{width:12px;height:12px;border-radius:50%;background:var(--c);margin:5px 0 0 5px;position:relative;z-index:1}
+.tli h3{font-family:Poppins,sans-serif;font-weight:500;font-size:19px;margin:0 0 4px;line-height:1.35}.tli .org2{font-size:14px;color:var(--muted);margin:0 0 12px}.tli p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.65;max-width:40em}</style>
 </head>
 <body>
 <nav class="top" aria-label="Main">
@@ -187,10 +224,10 @@ for (const k in C) C[k] = sc(C[k]);
 const SECTION_SEQ = ["projects", "education", "experience", "skills"];
 // The colours shift with the visitor's own time of day (their computer's clock).
 const TIMES = {
-  morning: { row: ["#E2B957", "#BCC7A3", "#7FA071", "#7FA79A", "#58735F"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" },
-  afternoon: { row: ["#C9962B", "#A3B18A", "#588157", "#5E8C7F", "#344E41"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" },
-  evening: { row: ["#E0A12E", "#B5B98E", "#5E8A58", "#5F9284", "#38533F"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" },
-  night: { row: ["#B8862A", "#8E9A72", "#46663F", "#3F6358", "#22322A"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" }
+  morning: { row: ["#C3CCAD", "#9DB58E", "#7FA071", "#7FA79A", "#58735F"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" },
+  afternoon: { row: ["#A3B18A", "#7C9A6A", "#588157", "#5E8C7F", "#344E41"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" },
+  evening: { row: ["#B5B98E", "#8AA27A", "#5E8A58", "#5F9284", "#38533F"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" },
+  night: { row: ["#8E9A72", "#6A8159", "#46663F", "#3F6358", "#22322A"], bg: "#F5F4F0", ink: "#17181F", muted: "#64656E", line: "#DAD7CF", chip: "#EBE9E3", pop: "#FFFFFF" }
 };
 const TIME = (() => {
   const asked = new URLSearchParams(location.search).get("time");     // preview: ?time=night
@@ -270,33 +307,24 @@ const projects = [
     tags: ["Python", "scikit-learn", "API", "Monitoring"], link: "https://github.com/mariabssadh1-droid/spark_check" }
 ];
 
+const chips = list => `<div class="chips">${list.map(t => `<span>${t}</span>`).join("")}</div>`;
 const info = {
   experience: { title: "Experience", color: C.sage, html: `
-    <div class="rows">
-      <div class="row"><div><h3>Team Lead, MMA Capstone</h3><p class="org">Propel Holdings × McGill</p></div>
-        <p>I lead a team of 4 working with Propel's risk team on data science for the customer utilization model. I'm the main contact with the client, I plan and split the team's work, and I help with the modelling. Client data is confidential, so it isn't shared here.</p></div>
-      <div class="row"><div><h3>Junior Associate, Treasury &amp; Investments Accounting and CEBA Finance</h3><p class="org">Export Development Canada</p></div>
-        <p>Investments accounting, treasury and CEBA loan program finance. I helped start a tool that gathers drawdown and distribution notices into one place, saving logins and making audits easier.</p></div>
-      <div class="row"><div><h3>Real Property Portfolio Analyst</h3><p class="org">Department of National Defence</p></div><p>Analyzed the department's real property portfolio.</p></div>
-      <div class="row"><div><h3>Indirect Goods &amp; Services Procurement Agent</h3><p class="org">Bombardier Aerospace</p></div><p>Worked on the buyer–supplier side of the business, handling procurement of indirect goods and services.</p></div>
-    </div>` },
+    <p class="lead2">Public sector, private sector and now applied data science.</p>
+    <div style="--c:${sectionColor.experience}"><div class="tl"><div class="tli"><span class="tlw">Now</span><span class="tld"></span><div><h3>Team Lead, MMA Capstone</h3><p class="org2">Propel Holdings × McGill</p><p>I lead a team of 4 working with Propel's risk team on the customer utilization model. I'm the main client contact and help with the modelling.</p></div></div><div class="tli"><span class="tlw">2024</span><span class="tld"></span><div><h3>Junior Associate, Treasury &amp; Investments Accounting and CEBA Finance</h3><p class="org2">Export Development Canada</p><p>Investments accounting and CEBA loan finance. Helped start a tool that gathers drawdown and distribution notices in one place.</p></div></div><div class="tli"><span class="tlw">Co-op</span><span class="tld"></span><div><h3>Real Property Portfolio Analyst</h3><p class="org2">Department of National Defence</p><p>Analyzed the department's real property portfolio.</p></div></div><div class="tli"><span class="tlw">Co-op</span><span class="tld"></span><div><h3>Indirect Goods &amp; Services Procurement Agent</h3><p class="org2">Bombardier Aerospace</p><p>Handled procurement of indirect goods and services.</p></div></div></div></div>` },
   skills: { title: "Skills", color: sc("#5E8C7F"), html: `
-    <p class="lead">I have a solid foundation in Python and SQL and understand how code, data and models fit together. I build efficiently with AI-assisted development tools, and I keep growing my hands-on programming with every project.</p>
-    <div class="skillgrid">
-      <div><h3>Programming &amp; data</h3><p>Python, SQL, R, pandas, Git, Excel (advanced), AI-assisted development</p></div>
-      <div><h3>Machine learning &amp; AI</h3><p>Regression and classification, forecasting, deep learning, NLP, causal inference, LLM agents, LangGraph</p></div>
-      <div><h3>Statistics</h3><p>Hypothesis testing, multivariate statistics</p></div>
-      <div><h3>Big data &amp; cloud</h3><p>Spark, Kafka, Databricks, APIs, model monitoring, Google Cloud, AWS, Azure</p></div>
-      <div><h3>Dashboards</h3><p>DOMO, Power BI, Tableau</p></div>
-      <div><h3>Business &amp; leadership</h3><p>Finance, procurement, team leadership, client communication, presenting to non-technical teams</p></div>
+    <p class="lead2">A solid foundation in Python and SQL, plus AI-assisted development to go from idea to working prototype quickly. I keep growing my hands-on programming with every project.</p>
+    <div class="icards three">
+      <div class="icard"><h3>Programming &amp; data</h3>${chips(["Python", "SQL", "R", "pandas", "Git", "Excel (advanced)", "AI-assisted development"])}</div>
+      <div class="icard"><h3>Machine learning &amp; AI</h3>${chips(["Regression", "Classification", "Forecasting", "Deep learning", "NLP", "Causal inference", "LLM agents", "LangGraph"])}</div>
+      <div class="icard"><h3>Statistics</h3>${chips(["Hypothesis testing", "Multivariate statistics"])}</div>
+      <div class="icard"><h3>Big data &amp; cloud</h3>${chips(["Spark", "Kafka", "Databricks", "APIs", "Model monitoring", "Google Cloud", "AWS", "Azure"])}</div>
+      <div class="icard"><h3>Dashboards</h3>${chips(["DOMO", "Power BI", "Tableau"])}</div>
+      <div class="icard"><h3>Business &amp; leadership</h3>${chips(["Finance", "Procurement", "Team leadership", "Client communication", "Presenting to non-technical teams"])}</div>
     </div>` },
   education: { title: "Education", color: C.plum, html: `
-    <div class="rows">
-      <div class="row"><div><h3>Master of Management in Analytics (MMA)</h3><p class="org">McGill University, Desautels Faculty of Management</p></div>
-        <p>Machine learning, deep learning, text analytics, multivariate statistics, causal inference and ML in production.</p></div>
-      <div class="row"><div><h3>Honours Bachelor of Commerce, Finance (Co-op)</h3><p class="org">University of Ottawa, Telfer School of Management</p></div>
-        <p>Magna Cum Laude, 2024.</p></div>
-    </div>` }
+    <p class="lead2">Business foundations plus advanced analytics.</p>
+    <div style="--c:${sectionColor.education}"><div class="tl"><div class="tli"><span class="tlw">Now</span><span class="tld"></span><div><h3>Master of Management in Analytics (MMA)</h3><p class="org2">McGill University, Desautels Faculty of Management</p><p>Machine learning, deep learning, text analytics, multivariate statistics, causal inference and ML in production.</p></div></div><div class="tli"><span class="tlw">2024</span><span class="tld"></span><div><h3>Honours Bachelor of Commerce, Finance (Co-op)</h3><p class="org2">University of Ottawa, Telfer School of Management</p><p>Magna Cum Laude. Co-op terms at DND and Bombardier.</p></div></div></div></div>` }
 };
 
 // draw the field (option G dots)
@@ -349,7 +377,8 @@ tidy(); addEventListener("resize", tidy);
 const page = document.getElementById("page");
 
 const groups = {
-  projects: { title: "Projects", tabs: ["personal", "masters"] },
+  projects: { title: "Projects", tabs: ["personal", "masters", "research"] },
+  research: { title: "Research", label: "Research", intro: "Research projects and write-ups.", order: [] },
   personal: { title: "Personal Projects", label: "Personal", intro: "Hackathons and competitions I joined outside of class.", color: C.orange, order: ["qloop", "fiam", "aldo"] },
   masters: { title: "Master's Projects", label: "Master's", intro: "From my MMA at McGill: real data, from prediction and deep learning to causal inference and production ML.", color: C.blue, order: ["spark", "flowbridge", "uplift", "art", "cyber", "pipeline"] }
 };
@@ -359,18 +388,19 @@ function topHTML(title, color, intro) {
     <h1 id="page-title">${title}</h1>${intro ? `<p class="kind" style="margin:22px 0 0;font-size:18px;max-width:34em">${intro}</p>` : ""}
   </div></div>`;
 }
+const ONE_LINE = {"qloop": "An AI vitals chair that alerts ER nurses when a waiting patient gets worse.", "fiam": "AI agents that read company filings and build a market-neutral portfolio.", "aldo": "An AI agent that helps ALDO check shoe returns faster.", "spark": "Predicts student burnout from phone data so counsellors can reach out early.", "flowbridge": "How the 2025 tariffs reshaped US–Mexico produce trade, plus a shipping tool.", "uplift": "Finds which customers buy because of an email, not just after it.", "art": "A deep learning model that tells real art from AI-generated images.", "cyber": "A text model that flags cyberbullying in online posts.", "pipeline": "A pipeline that processes data in batches and as a live stream."};
 function projectItems(key, color) {
-  return groups[key].order.map(id => projects.find(p => p.id === id)).map(p => `
-    <article class="pitem" id="p-${p.id}" style="--c:${color};--on:${onColor(color)}">
-      <div><p class="kind">${p.kind}</p><h3>${p.full}</h3>${p.award ? `<span class="badge">${p.award}</span>` : ""}</div>
-      <div>
-        <p class="q">${p.question}</p>
-        <p>${p.overview}</p>
-        <p class="mine"><b>My role:</b> ${p.role}</p>
-        <div class="tags">${p.tags.map(t => `<span>${t}</span>`).join("")}</div>
-        ${p.link ? `<a class="link-btn" href="${p.link}">View the code on GitHub</a>` : `<p class="status">${p.status}</p>`}
-      </div>
-    </article>`).join("");
+  if (!groups[key].order.length) return `<p class="empty">Coming soon.</p>`;
+  return `<div class="cards">` + groups[key].order.map(id => projects.find(p => p.id === id)).map(p => `
+    <details class="card" style="--c:${color};--on:${onColor(color)}">
+      <summary><span class="t">${p.title}${p.award ? ` <span class="badge">Award</span>` : ""}</span><span class="one">${ONE_LINE[p.id]}</span><span class="rm">Read more</span></summary>
+      <div class="more">
+          <p>${p.overview}</p>
+          <p class="mine"><b>My role:</b> ${p.role}</p>
+          <div class="tags">${p.tags.map(t => `<span>${t}</span>`).join("")}</div>
+          ${p.link ? `<a class="link-btn" href="${p.link}">View the code on GitHub</a>` : `<p class="status">${p.status}</p>`}
+        </div>
+    </details>`).join("") + `</div>`;
 }
 function groupHTML(tab) {
   const color = sectionColor.projects;
@@ -401,7 +431,7 @@ function originFor(id) {
 function render() {
   const id = location.hash.slice(1);
   if (groups[id] || info[id]) {
-    const tab = id === "masters" ? "masters" : "personal";
+    const tab = id === "masters" || id === "research" ? id : "personal";
     const [x, y] = originFor(groups[id] ? "projects" : id);
     page.style.setProperty("--x", x + "px"); page.style.setProperty("--y", y + "px");
     page.innerHTML = groups[id] ? groupHTML(tab) : infoHTML(id);
